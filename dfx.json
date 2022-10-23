@@ -1,0 +1,7 @@
+{
+  "canisters": {
+    "motoko-type-classes": {
+      "main": "Main.mo"
+    }
+  }
+}
