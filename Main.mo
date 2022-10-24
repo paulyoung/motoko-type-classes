@@ -6,6 +6,9 @@ import Show "typeclasses/Show";
 import Nat "instances/Nat";
 import Option "instances/Option";
 
+let nat = Nat.Instances;
+let option = Option.Instances;
+
 func useEqAndShow<A>(
   witness : Eq.Eq<A> and Show.Show<A>,
   x : A,
@@ -24,16 +27,16 @@ func useEqAndShow<A>(
     # Show.show(witness, y)
 };
 
-Debug.print(Show.show(Nat.Instances, 42));
+Debug.print(Show.show(nat, 42));
 
-Debug.print(Show.show(Option.Instances(Nat.Instances), null));
-Debug.print(Show.show(Option.Instances(Nat.Instances), ?42));
+Debug.print(Show.show(option(nat), null));
+Debug.print(Show.show(option(nat), ?42));
 
-Debug.print(useEqAndShow(Nat.Instances, 0, 1));
-Debug.print(useEqAndShow(Nat.Instances, 1, 1));
+Debug.print(useEqAndShow(nat, 0, 1));
+Debug.print(useEqAndShow(nat, 1, 1));
 
-Debug.print(useEqAndShow(Option.Instances(Nat.Instances), null, null));
-Debug.print(useEqAndShow(Option.Instances(Nat.Instances), ?0, null));
-Debug.print(useEqAndShow(Option.Instances(Nat.Instances), null, ?0));
-Debug.print(useEqAndShow(Option.Instances(Nat.Instances), ?0, ?1));
-Debug.print(useEqAndShow(Option.Instances(Nat.Instances), ?1, ?1));
+Debug.print(useEqAndShow(option(nat), null, null));
+Debug.print(useEqAndShow(option(nat), ?0, null));
+Debug.print(useEqAndShow(option(nat), null, ?0));
+Debug.print(useEqAndShow(option(nat), ?0, ?1));
+Debug.print(useEqAndShow(option(nat), ?1, ?1));
