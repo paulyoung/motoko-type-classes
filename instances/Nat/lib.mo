@@ -1,12 +1,16 @@
-import BaseNat "mo:base/Nat";
+import Nat "mo:base/Nat";
+
+import Eq "../../typeclasses/Eq";
 import Show "../../typeclasses/Show";
 
-module Nat {
-  public let show = {
+module {
+  public let Instances: Eq.Eq<Nat> and Show.Show<Nat> = {
+    eq = func (x : Nat, y : Nat) : Bool {
+      x == y;
+    };
+
     show = func (value : Nat) : Text {
-      BaseNat.toText(value);
+      Nat.toText(value);
     };
   };
-
-  let _ : Show.Show<Nat> = show;
 };

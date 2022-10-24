@@ -1,4 +1,4 @@
-module Show {
+module {
   public type Show<A> = {
     show : A -> Text;
   };
